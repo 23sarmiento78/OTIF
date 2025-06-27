@@ -485,8 +485,10 @@
                 <div class="hero-text">
                     <h1 class="hero-title" id="hero-title">Optimiza tu logística con la plataforma de OTIF</h1>
                     <p class="hero-subtitle">Gestiona, cotiza y rastrea tus envíos en una sola plataforma. Conecta tu operación logística con las mejores soluciones de transporte y recibe atención personalizada en cada etapa.</p>
-                    <a href="#cotizar" class="mdc-button mdc-button--raised hero-cta" aria-label="Cotiza tu envío ahora">Cotiza tu envío ahora</a>
-                    <a href="#beneficios" class="btn btn-outline-light btn-lg ms-3">Conoce nuestros beneficios</a>
+                    <div class="d-flex flex-column flex-md-row align-items-center justify-content-start gap-3">
+                        <a href="#cotizar" class="mdc-button mdc-button--raised hero-cta" aria-label="Cotiza tu envío ahora">Cotiza tu envío ahora</a>
+                        <a href="#beneficios" class="btn btn-outline-light btn-lg">Conoce nuestros beneficios</a>
+                    </div>
                     <div class="hero-stats" aria-label="Estadísticas de experiencia y satisfacción">
                         <div class="stat">
                             <span class="stat-number">+25</span>
@@ -651,30 +653,133 @@
     <footer class="footer mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-3">
-                    <h6>Contacto</h6>
-                    <p>México: 2da Magnolia 1615 Col. Reforma, Monterrey, Nuevo León. 64550 <br>+52 (81) 3105 - 9615</p>
-                    <p>EEUU: 8911 North Capital of Texas Highway, Suite 4200 Austin, TX 78759, USA <br>+1 (620) 604 - 9798</p>
-                    <p>China: 8 Shiji Blvd, Luijiazui, Pudong, Shanghai, China, 200120</p>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h4>Productos</h4>
+                        <ul>
+                            <li><a href="#">Plataforma OTIF</a></li>
+                            <li><a href="#">Seguimiento de sus envíos</a></li>
+                            <li><a href="#">Rastrear envíos Marítimos</a></li>
+                            <li><a href="#">Gestión de Pedidos</a></li>
+                            <li><a href="#">Aduanas</a></li>
+                            <li><a href="#">Emisión de carbono compensada</a></li>
+                            <li><a href="#">Envío Express</a></li>
+                            <li><a href="#">Carga Consolidada LTL</a></li>
+                            <li><a href="#">Transporte Terrestre</a></li>
+                            <li><a href="#">Aéreo</a></li>
+                            <li><a href="#">Contenedor Consolidado LCL</a></li>
+                            <li><a href="#">Transporte Marítimo</a></li>
+                            <li><a href="#">Despacho de aduana</a></li>
+                            <li><a href="#">Arrendamientos</a></li>
+                            <li><a href="#">Asesoramiento comercial</a></li>
+                            <li><a href="#">Seguro de carga</a></li>
+                            <li><a href="#">Clasificación del producto</a></li>
+                            <li><a href="#">Materiales peligrosos</a></li>
+                            <li><a href="#">Control de Cumplimiento</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h6>Enlaces</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#soluciones">Soluciones</a></li>
-                        <li><a href="#tecnologia">Tecnología</a></li>
-                        <li><a href="#empresa">Empresa</a></li>
-                        <li><a href="#recursos">Recursos</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-section">
+                        <h4>Casos de uso</h4>
+                        <ul>
+                            <li><a href="#">Público en general</a></li>
+                            <li><a href="#">Pequeñas y Medianas Empresas</a></li>
+                            <li><a href="#">Comercio electrónico</a></li>
+                            <li><a href="#">Bienes de alto valor</a></li>
+                            <li><a href="#">Marcas Globales</a></li>
+                            <li><a href="#">Distribución al por mayor</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h6>Legal</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Términos y condiciones</a></li>
-                        <li><a href="#">Aviso de privacidad</a></li>
-                    </ul>
-                    <p class="mt-3">&copy; 2020 OTIF. Todos los derechos reservados.</p>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h4>Recursos</h4>
+                        <ul>
+                            <li><a href="#">Diccionario</a></li>
+                            <li><a href="#">Información de recolección y entrega</a></li>
+                            <li><a href="#">Cumplimiento mayorista</a></li>
+                        </ul>
+                    </div>
                 </div>
+
+                <!-- Compañía -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h4>Compañía</h4>
+                        <ul>
+                            <li><a href="#">Affiliate program</a></li>
+                            <li><a href="#">Términos y condiciones</a></li>
+                            <li><a href="#">Compañías</a></li>
+                            <li><a href="#">Citando</a></li>
+                            <li><a href="#">Seguridad</a></li>
+                            <li><a href="#">¿Por qué OTIF?</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Newsletter y Redes Sociales -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer-section">
+                        <h4>Suscríbete a nuestro boletín</h4>
+                        <div class="newsletter-form mb-4">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Ingresa Tu Correo" aria-label="Email para newsletter">
+                                <button class="btn btn-primary" type="button">Suscribir</button>
+                            </div>
+                        </div>
+
+                        <h5>Redes sociales</h5>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <span class="material-icons">facebook</span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <span class="material-icons">twitter</span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <span class="material-icons">linkedin</span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <span class="material-icons">instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información de Contacto -->
+            <div class="row g-4 mt-4">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h5>Oficina en México</h5>
+                        <div class="contact-details">
+                            <p><strong>Dirección:</strong><br>
+                            2da Magnolia 1615 Col. Reforma, Monterrey, Nuevo León. 64550</p>
+                            <p><strong>Número Teléfonico:</strong><br>
+                            <a href="tel:+528182626130">+ 52 (81) 82626130</a></p>
+                            <p><strong>Correo Electrónico:</strong><br>
+                            <a href="mailto:hola@otif.mx">hola@otif.mx</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h5>Oficina en USA</h5>
+                        <div class="contact-details">
+                            <p><strong>Dirección:</strong><br>
+                            8911 North Capital of Texas Highway, Suite 4200 Austin, TX 78759, USA</p>
+                            <p><strong>Número Teléfonico:</strong><br>
+                            <a href="tel:+16206049798">+1 (620) 604-9798</a></p>
+                            <p><strong>Correo Electrónico:</strong><br>
+                            <a href="mailto:hola@otif.io">hola@otif.io</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 OTIF. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
