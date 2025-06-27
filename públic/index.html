@@ -17,127 +17,80 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="navbar navbar-expand-lg fixed-top main-navbar" role="banner">
-        <div class="container">
-            <section class="navbar-brand d-flex align-items-center" aria-label="Logo y título">
+    <!-- NAVBAR MODERNO Y RESPONSIVE PERSONALIZADO -->
+    <header class="main-navbar-custom">
+        <div class="container d-flex justify-content-between align-items-center py-2">
+            <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="imagenes/Otif isologo-3.png" alt="Logo OTIF, plataforma de logística" class="logo">
                 <span class="ms-2">OTIF</span>
-            </section>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            </a>
+            <button class="navbar-burger" id="navbarBurger" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
             </button>
-            
-            <nav class="collapse navbar-collapse" id="navbarNav" role="navigation">
-                <ul class="navbar-nav me-auto">
-                    <!-- Productos Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="nav-label">Productos</span>
-                        </a>
-                        <ul class="dropdown-menu multi-column">
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Plataforma OTIF</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Seguimiento de sus envíos</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Rastrear envíos Marítimos</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Gestión de Pedidos</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Aduanas</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Emisión de carbono compensada</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Envío Express</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Carga Consolidada LTL</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Transporte Terrestre</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Aéreo</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Contenedor Consolidado LCL</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Transporte Marítimo</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Despacho de aduana</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Arrendamientos</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Asesoriamiento comercial</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Seguro de carga</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Clasificación del producto</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Materiales peligrosos</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Control de Cumplimiento</span></a></li>
-                        </ul>
-                    </li>
-                    
-                    <!-- Casos de Uso Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="nav-label">Casos de uso</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Público en general</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Pequeñas y Medianas Empresas</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Comercio electrónico</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Bienes de alto valor</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Marcas Globales</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Distribución al por mayor</span></a></li>
-                        </ul>
-                    </li>
-                    
-                    <!-- Recursos Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="nav-label">Recursos</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Diccionario</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Información de recolección y entrega</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Cumplimiento mayorista</span></a></li>
-                        </ul>
-                    </li>
-                    
-                    <!-- Compañía Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="nav-label">Compañía</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Logística de superredes</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Clientes</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Programa de Afiliados</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">APIs</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Inteligencia artificial</span></a></li>
-                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Red Global</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <!-- Lado derecho del navbar -->
-                <div class="navbar-nav ms-auto">
-                    <div class="nav-item d-flex gap-2 align-items-center">
-                        <!-- Seguimiento -->
-                        <a href="tracking.html" class="btn btn-outline-light btn-sm me-2">
-                            <span class="material-icons">search</span>
-                            <span class="btn-label d-none d-md-inline">Seguimiento</span>
-                        </a>
-                        
-                        <!-- Carrito (solo visible si hay sesión) -->
-                        <button class="btn btn-outline-light btn-sm me-2" id="cart-btn" style="display: none;">
-                            <span class="material-icons">shopping_cart</span>
-                            <span class="btn-label d-none d-md-inline">Carrito</span>
-                        </button>
-                        
-                        <!-- Pedidos (solo visible si hay sesión) -->
-                        <button class="btn btn-outline-light btn-sm me-2" id="orders-btn" style="display: none;">
-                            <span class="material-icons">receipt_long</span>
-                            <span class="btn-label d-none d-md-inline">Pedidos</span>
-                        </button>
-                        
-                        <!-- Login -->
-                        <button class="btn btn-light btn-sm me-2" id="login-btn">
-                            <span class="material-icons me-1">login</span>
-                            <span class="btn-label">Iniciar Sesión</span>
-                        </button>
-                        
-                        <!-- Registro -->
-                        <button class="btn btn-primary btn-sm" id="register-btn">
-                            <span class="material-icons me-1">person_add</span>
-                            <span class="btn-label">Registrarse</span>
-                        </button>
-                    </div>
-                </div>
-            </nav>
         </div>
+        <nav class="navbar-mobile-menu" id="navbarMobileMenu">
+            <ul>
+                <li class="has-dropdown">
+                    <button class="dropdown-toggle-custom">Productos</button>
+                    <ul class="dropdown-menu-custom">
+                        <li><a href="#">Plataforma OTIF</a></li>
+                        <li><a href="#">Seguimiento de sus envíos</a></li>
+                        <li><a href="#">Rastrear envíos Marítimos</a></li>
+                        <li><a href="#">Gestión de Pedidos</a></li>
+                        <li><a href="#">Aduanas</a></li>
+                        <li><a href="#">Emisión de carbono compensada</a></li>
+                        <li><a href="#">Envío Express</a></li>
+                        <li><a href="#">Carga Consolidada LTL</a></li>
+                        <li><a href="#">Transporte Terrestre</a></li>
+                        <li><a href="#">Aéreo</a></li>
+                        <li><a href="#">Contenedor Consolidado LCL</a></li>
+                        <li><a href="#">Transporte Marítimo</a></li>
+                        <li><a href="#">Despacho de aduana</a></li>
+                        <li><a href="#">Arrendamientos</a></li>
+                        <li><a href="#">Asesoriamiento comercial</a></li>
+                        <li><a href="#">Seguro de carga</a></li>
+                        <li><a href="#">Clasificación del producto</a></li>
+                        <li><a href="#">Materiales peligrosos</a></li>
+                        <li><a href="#">Control de Cumplimiento</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <button class="dropdown-toggle-custom">Casos de uso</button>
+                    <ul class="dropdown-menu-custom">
+                        <li><a href="#">Público en general</a></li>
+                        <li><a href="#">Pequeñas y Medianas Empresas</a></li>
+                        <li><a href="#">Comercio electrónico</a></li>
+                        <li><a href="#">Bienes de alto valor</a></li>
+                        <li><a href="#">Marcas Globales</a></li>
+                        <li><a href="#">Distribución al por mayor</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <button class="dropdown-toggle-custom">Recursos</button>
+                    <ul class="dropdown-menu-custom">
+                        <li><a href="#">Diccionario</a></li>
+                        <li><a href="#">Información de recolección y entrega</a></li>
+                        <li><a href="#">Cumplimiento mayorista</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <button class="dropdown-toggle-custom">Compañía</button>
+                    <ul class="dropdown-menu-custom">
+                        <li><a href="#">Logística de superredes</a></li>
+                        <li><a href="#">Clientes</a></li>
+                        <li><a href="#">Programa de Afiliados</a></li>
+                        <li><a href="#">APIs</a></li>
+                        <li><a href="#">Inteligencia artificial</a></li>
+                        <li><a href="#">Red Global</a></li>
+                    </ul>
+                </li>
+                <li><a href="tracking.html" class="btn btn-outline-light w-100 my-2">Seguimiento</a></li>
+                <li><a href="#" class="btn btn-outline-light w-100 my-2" id="cart-btn" style="display:none;">Carrito</a></li>
+                <li><a href="#" class="btn btn-outline-light w-100 my-2" id="orders-btn" style="display:none;">Pedidos</a></li>
+                <li><a href="#" class="btn btn-light w-100 my-2" id="login-btn">Iniciar Sesión</a></li>
+                <li><a href="registro.html" class="btn btn-primary w-100 my-2" id="register-btn">Registrarse</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main id="main-content" tabindex="-1">
