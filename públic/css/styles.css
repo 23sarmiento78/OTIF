@@ -327,72 +327,120 @@ body {
 
 /* Responsive Navbar */
 @media (max-width: 991.98px) {
+    .main-navbar {
+        padding: 0.5rem 0.5rem;
+    }
+    .navbar-brand span {
+        font-size: 1.1rem;
+    }
+    .navbar-toggler {
+        border: 2px solid #fff;
+        background: rgba(37,99,235,0.8);
+        border-radius: 8px;
+        padding: 6px 10px;
+    }
+    .navbar-toggler-icon {
+        background-image: none;
+        width: 2rem;
+        height: 2rem;
+        position: relative;
+    }
+    .navbar-toggler-icon:before, .navbar-toggler-icon:after, .navbar-toggler-icon div {
+        content: '';
+        display: block;
+        height: 3px;
+        background: #fff;
+        margin: 6px 0;
+        border-radius: 2px;
+        transition: all 0.3s;
+    }
     .navbar-collapse {
-        background: rgba(89,50,234,0.95);
-        border-radius: var(--otif-radius);
-        margin-top: 1rem;
-        padding: 1rem;
-        backdrop-filter: blur(10px);
+        background: var(--otif-nav-bg, #2563EB);
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        padding: 1rem 0.5rem;
     }
-    
     .navbar-nav .nav-link {
-        padding: 0.75rem 1rem !important;
-        border-radius: var(--otif-radius-sm);
-        margin-bottom: 0.25rem;
+        color: #fff !important;
+        font-size: 1.1rem;
+        padding: 0.75rem 1.2rem !important;
+        border-radius: 8px;
+        margin-bottom: 4px;
+        background: rgba(0,0,0,0.05);
     }
-    
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+        background: rgba(16,185,129,0.15);
+        color: #fff !important;
+    }
     .dropdown-menu {
         position: static !important;
-        transform: none !important;
-        width: 100%;
-        margin-top: 0.5rem;
+        float: none;
+        background: #fff;
+        color: #222;
         box-shadow: none;
-        border: 1px solid rgba(255,255,255,0.2);
-        max-height: none;
-        display: block;
+        border-radius: 12px;
+        margin: 0.5rem 0;
+        min-width: 100%;
+        font-size: 1rem;
     }
-    
-    .dropdown-menu.multi-column {
-        display: block;
-        max-width: none;
-        width: 100%;
-        max-height: none;
+    .dropdown-menu .dropdown-item {
+        color: #222;
+        padding: 0.9rem 1.5rem;
+        font-size: 1.05rem;
+        border-radius: 8px;
     }
-    
-    .dropdown-menu.multi-column::before,
-    .dropdown-menu.multi-column::after {
-        display: none;
-    }
-    
-    .dropdown-item {
-        color: rgba(255,255,255,0.9);
-    }
-    
-    .dropdown-item:hover {
-        background: rgba(255,255,255,0.2);
+    .dropdown-menu .dropdown-item:hover {
+        background: var(--otif-primary, #2563EB);
         color: #fff;
     }
-    
+    .dropdown-menu.show {
+        display: block !important;
+    }
     .navbar-nav .btn {
-        margin: 0.25rem 0;
         width: 100%;
-        justify-content: center;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+        padding: 0.7rem 1.2rem;
     }
 }
 
 @media (max-width: 576px) {
     .navbar-brand span {
+        font-size: 1rem;
+    }
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding: 0.7rem 1rem !important;
+    }
+    .dropdown-menu .dropdown-item {
+        font-size: 0.98rem;
+        padding: 0.8rem 1.2rem;
+    }
+}
+
+/* Mejorar contraste de textos en navbar y dropdowns */
+.main-navbar, .navbar-collapse {
+    color: #fff;
+}
+.navbar-nav .nav-link, .navbar-nav .btn {
+    color: #fff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.12);
+}
+
+/* Forzar visibilidad de dropdowns en móviles */
+@media (max-width: 991.98px) {
+    .dropdown-menu {
         display: none;
     }
-    
-    .navbar-nav .btn {
-        font-size: 0.85rem;
-        padding: 0.4rem 0.8rem;
+    .dropdown.show .dropdown-menu {
+        display: block !important;
     }
-    
-    .dropdown-menu {
-        margin-left: 0.5rem;
-    }
+}
+
+/* Mejorar accesibilidad de los textos */
+.navbar-nav .nav-link, .dropdown-item {
+    letter-spacing: 0.01em;
+    font-weight: 500;
 }
 
 /* Hero con padding-top para compensar el navbar fijo */

@@ -895,4 +895,39 @@ window.OTIFApp = {
     showNotification,
     calcularCotizacion,
     mostrarResultadoCotizacion
-}; 
+};
+
+// --- MEJORA DROPDOWNS NAVBAR EN MÓVILES ---
+document.addEventListener('DOMContentLoaded', function() {
+    // Cerrar todos los dropdowns al hacer click fuera
+    document.addEventListener('click', function(e) {
+        document.querySelectorAll('.nav-item.dropdown.show').forEach(function(drop) {
+            if (!drop.contains(e.target)) {
+                drop.classList.remove('show');
+                var menu = drop.querySelector('.dropdown-menu');
+                if(menu) menu.classList.remove('show');
+            }
+        });
+    });
+    // Alternar dropdowns al tocar/click en el nav-link
+    document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var parent = link.parentElement;
+            var menu = parent.querySelector('.dropdown-menu');
+            var isOpen = parent.classList.contains('show');
+            // Cerrar otros
+            document.querySelectorAll('.nav-item.dropdown.show').forEach(function(drop) {
+                if (drop !== parent) {
+                    drop.classList.remove('show');
+                    var m = drop.querySelector('.dropdown-menu');
+                    if(m) m.classList.remove('show');
+                }
+            });
+            // Alternar actual
+            parent.classList.toggle('show');
+            if(menu) menu.classList.toggle('show');
+        });
+    });
+});
+// --- FIN MEJORA DROPDOWNS --- 
