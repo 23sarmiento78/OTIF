@@ -298,20 +298,22 @@ class CotizacionWizard {
     }
 }
 
-// Smooth scrolling for navigation links
+// Scroll suave para enlaces de navegación
+// (Evita error con href="#")
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
+            // Si el href es solo '#', no hacer nada
+            if (targetId === '#') {
+                e.preventDefault();
+                return;
+            }
             const targetElement = document.querySelector(targetId);
-            
             if (targetElement) {
-                const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
-                
+                e.preventDefault();
+                const offsetTop = targetElement.offsetTop - 80; // Ajusta según tu header
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -897,37 +899,41 @@ window.OTIFApp = {
     mostrarResultadoCotizacion
 };
 
-// --- MEJORA DROPDOWNS NAVBAR EN MÓVILES ---
+// --- NAVBAR MÓVIL PERSONALIZADO ---
 document.addEventListener('DOMContentLoaded', function() {
-    // Cerrar todos los dropdowns al hacer click fuera
-    document.addEventListener('click', function(e) {
-        document.querySelectorAll('.nav-item.dropdown.show').forEach(function(drop) {
-            if (!drop.contains(e.target)) {
-                drop.classList.remove('show');
-                var menu = drop.querySelector('.dropdown-menu');
-                if(menu) menu.classList.remove('show');
+    var burger = document.getElementById('navbarBurger');
+    var menu = document.getElementById('navbarMobileMenu');
+    if (burger && menu) {
+        burger.addEventListener('click', function() {
+            menu.classList.toggle('open');
+        });
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', function(e) {
+            if (!menu.contains(e.target) && !burger.contains(e.target)) {
+                menu.classList.remove('open');
             }
         });
-    });
-    // Alternar dropdowns al tocar/click en el nav-link
-    document.querySelectorAll('.nav-item.dropdown > .nav-link').forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            var parent = link.parentElement;
-            var menu = parent.querySelector('.dropdown-menu');
-            var isOpen = parent.classList.contains('show');
-            // Cerrar otros
-            document.querySelectorAll('.nav-item.dropdown.show').forEach(function(drop) {
-                if (drop !== parent) {
-                    drop.classList.remove('show');
-                    var m = drop.querySelector('.dropdown-menu');
-                    if(m) m.classList.remove('show');
-                }
+        // Dropdowns personalizados
+        menu.querySelectorAll('.has-dropdown > .dropdown-toggle-custom').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var parent = btn.parentElement;
+                var isOpen = parent.classList.contains('open');
+                // Cerrar otros
+                menu.querySelectorAll('.has-dropdown.open').forEach(function(drop) {
+                    if (drop !== parent) drop.classList.remove('open');
+                });
+                // Alternar actual
+                parent.classList.toggle('open', !isOpen);
             });
-            // Alternar actual
-            parent.classList.toggle('show');
-            if(menu) menu.classList.toggle('show');
         });
-    });
+        // Cerrar menú al hacer click en un enlace
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menu.classList.remove('open');
+                menu.querySelectorAll('.has-dropdown').forEach(function(drop) { drop.classList.remove('open'); });
+            });
+        });
+    }
 });
-// --- FIN MEJORA DROPDOWNS --- 
+// --- FIN NAVBAR MÓVIL PERSONALIZADO --- 
