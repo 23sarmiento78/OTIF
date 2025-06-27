@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Envíos - OTIF</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Material Design Web Components -->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=geometry"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/tracking.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="navbar navbar-expand-lg fixed-top main-navbar" role="banner">
+        <div class="container">
+            <section class="navbar-brand d-flex align-items-center" aria-label="Logo y título">
+                <img src="imagenes/Otif isologo-3.png" alt="Logo OTIF, plataforma de logística" class="logo">
+                <span class="ms-2">Seguimiento OTIF</span>
+            </section>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <nav class="collapse navbar-collapse" id="navbarNav" role="navigation">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="btn btn-light">
+                            <span class="btn-label">Volver al Inicio</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="tracking-main">
+        <div class="container">
+            <!-- Search Section -->
+            <section class="search-section text-center py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <h1 class="display-4 fw-bold mb-3">Seguimiento de Envíos</h1>
+                        <p class="lead mb-4">Ingresa tu número de guía para rastrear tu envío en tiempo real</p>
+                        
+                        <div class="search-form">
+                            <div class="row g-3 justify-content-center">
+                                <div class="col-md-8">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control form-control-lg" id="tracking-number" placeholder="Ej: OTIF-2024-001234">
+                                        <label for="tracking-number">Número de Guía</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary btn-lg w-100" id="search-btn">
+                                        <span class="material-icons me-2">search</span>
+                                        <span class="btn-label">Rastrear</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tracking Results -->
+            <section class="tracking-results" id="tracking-results" style="display: none;">
+                <div class="tracking-header bg-white rounded-3 shadow-sm p-4 mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h2 class="mb-2">Envió #<span id="tracking-id">OTIF-2024-001234</span></h2>
+                            <p class="tracking-status mb-0" id="tracking-status">En Tránsito</p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <div class="tracking-actions d-flex gap-2 justify-content-md-end">
+                                <button class="btn btn-outline-primary">
+                                    <span class="material-icons me-1">download</span>
+                                    <span class="btn-label">PDF</span>
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <span class="material-icons me-1">share</span>
+                                    <span class="btn-label">Compartir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tracking-details mb-4">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="tracking-card bg-white rounded-3 shadow-sm p-4 h-100">
+                                <h3 class="h5 mb-3">Información del Envío</h3>
+                                <div class="detail-item d-flex justify-content-between py-2 border-bottom">
+                                    <span class="detail-label fw-semibold">Origen:</span>
+                                    <span class="detail-value" id="origin">Ciudad de México, MX</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between py-2 border-bottom">
+                                    <span class="detail-label fw-semibold">Destino:</span>
+                                    <span class="detail-value" id="destination">Monterrey, MX</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between py-2 border-bottom">
+                                    <span class="detail-label fw-semibold">Tipo de Envío:</span>
+                                    <span class="detail-value" id="shipment-type">Terrestre</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between py-2 border-bottom">
+                                    <span class="detail-label fw-semibold">Peso:</span>
+                                    <span class="detail-value" id="weight">500 kg</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between py-2">
+                                    <span class="detail-label fw-semibold">Volumen:</span>
+                                    <span class="detail-value" id="volume">2.5 m³</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="tracking-card bg-white rounded-3 shadow-sm p-4 h-100">
+                                <h3 class="h5 mb-3">Información de Entrega</h3>
+                                <div class="detail-item d-flex justify-content-between py-2 border-bottom">
+                                    <span class="detail-label fw-semibold">Fecha Estimada:</span>
+                                    <span class="detail-value" id="estimated-date">15 de Enero, 2024</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between py-2 border-bottom">
+                                    <span class="detail-label fw-semibold">Hora Estimada:</span>
+                                    <span class="detail-value" id="estimated-time">14:00 - 18:00</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between py-2 border-bottom">
+                                    <span class="detail-label fw-semibold">Destinatario:</span>
+                                    <span class="detail-value" id="recipient">Juan Pérez</span>
+                                </div>
+                                <div class="detail-item d-flex justify-content-between py-2">
+                                    <span class="detail-label fw-semibold">Teléfono:</span>
+                                    <span class="detail-value" id="phone">+52 81 1234-5678</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="tracking-timeline bg-white rounded-3 shadow-sm p-4 mb-4">
+                    <h3 class="h5 mb-4">Historial de Eventos</h3>
+                    <div class="timeline" id="timeline">
+                        <!-- Timeline items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="tracking-map bg-white rounded-3 shadow-sm p-4">
+                    <h3 class="h5 mb-4">Ubicación Actual</h3>
+                    <div class="map-container" id="map-container">
+                        <div id="map" style="height: 400px; width: 100%; border-radius: 8px;"></div>
+                        <div class="map-info mt-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="map-detail">
+                                        <span class="material-icons text-primary me-2">location_on</span>
+                                        <span id="current-location">Ubicación actual del envío</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="map-detail">
+                                        <span class="material-icons text-success me-2">schedule</span>
+                                        <span id="last-update">Última actualización</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demo Tracking -->
+            <section class="demo-tracking text-center py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h3 class="h4 mb-3">Números de Demo</h3>
+                        <p class="text-muted mb-4">Prueba el seguimiento con estos números de ejemplo:</p>
+                        <div class="demo-numbers d-flex flex-wrap gap-2 justify-content-center">
+                            <button class="btn btn-outline-primary demo-btn" data-tracking="OTIF-2024-001234">OTIF-2024-001234</button>
+                            <button class="btn btn-outline-primary demo-btn" data-tracking="OTIF-2024-005678">OTIF-2024-005678</button>
+                            <button class="btn btn-outline-primary demo-btn" data-tracking="OTIF-2024-009876">OTIF-2024-009876</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4 footer-content">
+                <div class="col-lg-6">
+                    <div class="footer-section">
+                        <img src="imagenes/Otif isologo-3.png" alt="OTIF Logo" class="footer-logo">
+                        <p>Seguimiento en tiempo real de tus envíos con OTIF.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer-section">
+                        <h4>Contacto</h4>
+                        <p>📧 tracking@otif.mx</p>
+                        <p>📞 +52 (55) 1234-5678</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 OTIF. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Material Design JavaScript -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/tracking.js"></script>
+</body>
+</html> 

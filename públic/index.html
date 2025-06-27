@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTIF - Plataforma de Logística Inteligente</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Material Design Web Components -->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="navbar navbar-expand-lg fixed-top main-navbar" role="banner">
+        <div class="container">
+            <section class="navbar-brand d-flex align-items-center" aria-label="Logo y título">
+                <img src="imagenes/Otif isologo-3.png" alt="Logo OTIF, plataforma de logística" class="logo">
+                <span class="ms-2">OTIF</span>
+            </section>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <nav class="collapse navbar-collapse" id="navbarNav" role="navigation">
+                <ul class="navbar-nav me-auto">
+                    <!-- Productos Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="nav-label">Productos</span>
+                        </a>
+                        <ul class="dropdown-menu multi-column">
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Plataforma OTIF</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Seguimiento de sus envíos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Rastrear envíos Marítimos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Gestión de Pedidos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Aduanas</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Emisión de carbono compensada</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Envío Express</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Carga Consolidada LTL</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Transporte Terrestre</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Aéreo</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Contenedor Consolidado LCL</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Transporte Marítimo</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Despacho de aduana</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Arrendamientos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Asesoriamiento comercial</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Seguro de carga</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Clasificación del producto</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Materiales peligrosos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Control de Cumplimiento</span></a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Casos de Uso Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="nav-label">Casos de uso</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Público en general</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Pequeñas y Medianas Empresas</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Comercio electrónico</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Bienes de alto valor</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Marcas Globales</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Distribución al por mayor</span></a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Recursos Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="nav-label">Recursos</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Diccionario</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Información de recolección y entrega</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Cumplimiento mayorista</span></a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Compañía Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="nav-label">Compañía</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Logística de superredes</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Clientes</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Programa de Afiliados</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">APIs</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Inteligencia artificial</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Red Global</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <!-- Lado derecho del navbar -->
+                <div class="navbar-nav ms-auto">
+                    <div class="nav-item d-flex gap-2 align-items-center">
+                        <!-- Seguimiento -->
+                        <a href="tracking.html" class="btn btn-outline-light btn-sm me-2">
+                            <span class="material-icons">search</span>
+                            <span class="btn-label d-none d-md-inline">Seguimiento</span>
+                        </a>
+                        
+                        <!-- Carrito (solo visible si hay sesión) -->
+                        <button class="btn btn-outline-light btn-sm me-2" id="cart-btn" style="display: none;">
+                            <span class="material-icons">shopping_cart</span>
+                            <span class="btn-label d-none d-md-inline">Carrito</span>
+                        </button>
+                        
+                        <!-- Pedidos (solo visible si hay sesión) -->
+                        <button class="btn btn-outline-light btn-sm me-2" id="orders-btn" style="display: none;">
+                            <span class="material-icons">receipt_long</span>
+                            <span class="btn-label d-none d-md-inline">Pedidos</span>
+                        </button>
+                        
+                        <!-- Login -->
+                        <button class="btn btn-light btn-sm me-2" id="login-btn">
+                            <span class="material-icons me-1">login</span>
+                            <span class="btn-label">Iniciar Sesión</span>
+                        </button>
+                        
+                        <!-- Registro -->
+                        <button class="btn btn-primary btn-sm" id="register-btn">
+                            <span class="material-icons me-1">person_add</span>
+                            <span class="btn-label">Registrarse</span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <!-- HERO -->
+        <section class="hero hero-video-bg" aria-labelledby="hero-title">
+            <!-- Video de fondo -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="imagenes/5661061-hd_1920_1080_30fps.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            
+            <!-- Overlay para mejorar legibilidad -->
+            <div class="hero-overlay"></div>
+            
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title" id="hero-title">La plataforma de logística que conecta tu carga con el mundo</h1>
+                    <p class="hero-subtitle">Gestiona envíos terrestres, aéreos y marítimos con cotización inmediata y seguimiento en tiempo real.</p>
+                    <a href="#cotizacion" class="mdc-button mdc-button--raised hero-cta" aria-label="Cotiza tu envío ahora">Cotiza tu envío ahora</a>
+                    <div class="hero-stats" aria-label="Estadísticas de experiencia y satisfacción">
+                        <div class="stat">
+                            <span class="stat-number">+25</span>
+                            <span class="stat-label">Años de experiencia</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">+10K</span>
+                            <span class="stat-label">Envíos mensuales</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Satisfacción</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cotización Section -->
+        <section class="cotizacion-section" id="cotizacion">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="cotizacion-card">
+                            <div class="cotizacion-header">
+                                <h2 class="cotizacion-title">
+                                    <span class="material-icons me-2">calculate</span>
+                                    Cotización Inmediata
+                                </h2>
+                                <p class="cotizacion-subtitle">Obtén una cotización instantánea para tu envío</p>
+                            </div>
+                            
+                            <div class="cotizacion-form">
+                                <div class="row g-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="origen" class="form-label">
+                                                <span class="material-icons me-1">location_on</span>
+                                                Origen
+                                            </label>
+                                            <input type="text" class="form-control" id="origen" placeholder="Ciudad de origen">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="destino" class="form-label">
+                                                <span class="material-icons me-1">location_on</span>
+                                                Destino
+                                            </label>
+                                            <input type="text" class="form-control" id="destino" placeholder="Ciudad de destino">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="peso" class="form-label">
+                                                <span class="material-icons me-1">scale</span>
+                                                Peso (kg)
+                                            </label>
+                                            <input type="number" class="form-control" id="peso" placeholder="0.0" step="0.1">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="largo" class="form-label">
+                                                <span class="material-icons me-1">straighten</span>
+                                                Largo (cm)
+                                            </label>
+                                            <input type="number" class="form-control" id="largo" placeholder="0" step="0.1">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="ancho" class="form-label">
+                                                <span class="material-icons me-1">straighten</span>
+                                                Ancho (cm)
+                                            </label>
+                                            <input type="number" class="form-control" id="ancho" placeholder="0" step="0.1">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="alto" class="form-label">
+                                                <span class="material-icons me-1">straighten</span>
+                                                Alto (cm)
+                                            </label>
+                                            <input type="number" class="form-control" id="alto" placeholder="0" step="0.1">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="tipo" class="form-label">
+                                                <span class="material-icons me-1">local_shipping</span>
+                                                Tipo
+                                            </label>
+                                            <select class="form-select" id="tipo">
+                                                <option value="">Seleccionar</option>
+                                                <option value="terrestre">Terrestre</option>
+                                                <option value="aereo">Aéreo</option>
+                                                <option value="maritimo">Marítimo</option>
+                                                <option value="express">Express</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="form-label">&nbsp;</label>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-outline-primary btn-medidas" id="btn-medidas" type="button">
+                                                    <span class="material-icons">straighten</span>
+                                                </button>
+                                                <button class="btn btn-primary btn-cotizar flex-grow-1" id="btn-cotizar">
+                                                    <span class="material-icons me-1">calculate</span>
+                                                    Cotizar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="cotizacion-result" id="cotizacion-result" style="display: none;">
+                                <div class="result-header">
+                                    <h3 class="result-title">
+                                        <span class="material-icons me-2">receipt</span>
+                                        Resultado de Cotización
+                                    </h3>
+                                </div>
+                                <div class="result-content">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="result-item">
+                                                <span class="result-label">Precio Estimado:</span>
+                                                <span class="result-value" id="precio-estimado">$0.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="result-item">
+                                                <span class="result-label">Tiempo Estimado:</span>
+                                                <span class="result-value" id="tiempo-estimado">0 días</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="result-item">
+                                                <span class="result-label">Servicio:</span>
+                                                <span class="result-value" id="servicio-seleccionado">-</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="result-item">
+                                                <button class="btn btn-success btn-reservar" id="btn-reservar">
+                                                    <span class="material-icons me-1">shopping_cart</span>
+                                                    Reservar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Detalles del Envío -->
+                                    <div class="detalles-envio-section mt-4">
+                                        <h5 class="detalles-title">
+                                            <span class="material-icons me-2">info</span>
+                                            Detalles del Envío
+                                        </h5>
+                                        <div class="detalles-content" id="detalles-envio">
+                                            <!-- Los detalles se llenarán dinámicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS -->
+        <section id="servicios" class="servicios alt-bg" aria-labelledby="servicios-title">
+            <div class="container">
+                <h2 class="section-title" id="servicios-title">Nuestros Servicios</h2>
+                <div class="row g-4" role="list">
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <article class="servicio-card h-100">
+                            <img src="imagenes/Transporte-Terrestre-Transmodal-400x400.jpg" alt="Transporte Terrestre, camión de carga" loading="lazy">
+                            <h3>Transporte Terrestre</h3>
+                            <p>Soluciones logísticas por carretera con cobertura nacional e internacional. Ideal para cargas volumétricas y envíos regulares.</p>
+                            <button class="btn btn-primary w-100" aria-label="Cotizar transporte terrestre">Cotizar Terrestre</button>
+                        </article>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <article class="servicio-card h-100">
+                            <img src="imagenes/transporte-aereo-e1571940173983.jpg" alt="Transporte Aéreo, avión de carga" loading="lazy">
+                            <h3>Transporte Aéreo</h3>
+                            <p>Envíos urgentes y de alto valor con tiempos de entrega garantizados. Perfecto para mercancía perecedera y documentos.</p>
+                            <button class="btn btn-primary w-100" aria-label="Cotizar transporte aéreo">Cotizar Aéreo</button>
+                        </article>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <article class="servicio-card h-100">
+                            <img src="imagenes/ventajas-maritimo.jpg" alt="Transporte Marítimo, barco de carga" loading="lazy">
+                            <h3>Transporte Marítimo</h3>
+                            <p>Soluciones para cargas masivas y contenedores completos. La opción más económica para envíos internacionales.</p>
+                            <button class="btn btn-primary w-100" aria-label="Cotizar transporte marítimo">Cotizar Marítimo</button>
+                        </article>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <article class="servicio-card h-100">
+                            <img src="imagenes/paqueteria.jpg" alt="Paquetería, cajas y paquetes" loading="lazy">
+                            <h3>Paquetería</h3>
+                            <p>Envíos pequeños y express a nivel nacional e internacional.</p>
+                            <button class="btn btn-primary w-100" aria-label="Cotizar paquetería">Cotizar Paquetería</button>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFICIOS -->
+        <section id="beneficios" class="beneficios alt-bg" aria-labelledby="beneficios-title">
+            <div class="container">
+                <h2 class="section-title" id="beneficios-title">¿Por qué elegir OTIF?</h2>
+                <div class="row g-4" role="list">
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <article class="beneficio-card h-100">
+                            <span class="material-icons" aria-hidden="true">verified_user</span>
+                            <h4>Seguridad y confianza</h4>
+                            <p>Certificaciones internacionales y monitoreo 24/7.</p>
+                        </article>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <article class="beneficio-card h-100">
+                            <span class="material-icons" aria-hidden="true">speed</span>
+                            <h4>Rapidez y eficiencia</h4>
+                            <p>Procesos automatizados y entregas on-time.</p>
+                        </article>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <article class="beneficio-card h-100">
+                            <span class="material-icons" aria-hidden="true">support_agent</span>
+                            <h4>Soporte personalizado</h4>
+                            <p>Atención a clientes y seguimiento en tiempo real.</p>
+                        </article>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <article class="beneficio-card h-100">
+                            <span class="material-icons" aria-hidden="true">public</span>
+                            <h4>Cobertura global</h4>
+                            <p>Red de aliados en todo el mundo.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section py-5">
+            <div class="container">
+                <div class="row text-center mb-5">
+                    <div class="col-12">
+                        <h2 class="section-title">¿Por Qué Elegir OTIF?</h2>
+                        <p class="section-subtitle">Conectamos el ecosistema logístico de México</p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="benefit-card text-center p-4">
+                            <div class="benefit-icon mb-3">
+                                <span class="material-icons">speed</span>
+                            </div>
+                            <h4>Rapidez</h4>
+                            <p>Cotizaciones en segundos y envíos optimizados</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="benefit-card text-center p-4">
+                            <div class="benefit-icon mb-3">
+                                <span class="material-icons">security</span>
+                            </div>
+                            <h4>Seguridad</h4>
+                            <p>Plataforma segura con seguimiento en tiempo real</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="benefit-card text-center p-4">
+                            <div class="benefit-icon mb-3">
+                                <span class="material-icons">trending_up</span>
+                            </div>
+                            <h4>Eficiencia</h4>
+                            <p>Reducción de costos y tiempos de entrega</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="benefit-card text-center p-4">
+                            <div class="benefit-icon mb-3">
+                                <span class="material-icons">support_agent</span>
+                            </div>
+                            <h4>Soporte 24/7</h4>
+                            <p>Atención personalizada en todo momento</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuestros Compañeros Section -->
+        <section class="companions-section py-5 bg-light">
+            <div class="container">
+                <div class="row text-center mb-5">
+                    <div class="col-12">
+                        <h2 class="section-title">Nuestros Compañeros</h2>
+                        <p class="section-subtitle">Integramos con las mejores plataformas y servicios de logística</p>
+                    </div>
+                </div>
+                
+                <!-- Partners Tecnológicos -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h3 class="partners-category text-center mb-4">Plataformas de E-commerce</h3>
+                        <div class="partners-grid">
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">🛒</span>
+                                </div>
+                                <h4>Shopify</h4>
+                                <p>Integración completa con tu tienda online</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">🛍️</span>
+                                </div>
+                                <h4>PrestaShop</h4>
+                                <p>Conecta tu tienda PrestaShop con OTIF</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">⚡</span>
+                                </div>
+                                <h4>Magento</h4>
+                                <p>Integración nativa con Magento</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">📦</span>
+                                </div>
+                                <h4>WooCommerce</h4>
+                                <p>Plugin oficial para WordPress</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partners de Logística -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h3 class="partners-category text-center mb-4">Servicios de Logística</h3>
+                        <div class="partners-grid">
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">🚚</span>
+                                </div>
+                                <h4>UPS</h4>
+                                <p>Integración con servicios UPS</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">📮</span>
+                                </div>
+                                <h4>DHL</h4>
+                                <p>Conecta con la red global DHL</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">📋</span>
+                                </div>
+                                <h4>FedEx</h4>
+                                <p>Servicios express y estándar</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">🌐</span>
+                                </div>
+                                <h4>Estafeta</h4>
+                                <p>Cobertura nacional mexicana</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Partners de Tecnología -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h3 class="partners-category text-center mb-4">Tecnología y APIs</h3>
+                        <div class="partners-grid">
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">🔌</span>
+                                </div>
+                                <h4>REST APIs</h4>
+                                <p>Integración programática completa</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">📊</span>
+                                </div>
+                                <h4>Webhooks</h4>
+                                <p>Notificaciones en tiempo real</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">🔐</span>
+                                </div>
+                                <h4>OAuth 2.0</h4>
+                                <p>Autenticación segura</p>
+                            </div>
+                            
+                            <div class="partner-card">
+                                <div class="partner-logo">
+                                    <span class="partner-icon">📱</span>
+                                </div>
+                                <h4>Mobile SDK</h4>
+                                <p>Integración en apps móviles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Estadísticas de Integración -->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="integration-stats">
+                            <div class="row g-4">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="stat-item">
+                                        <h3 class="stat-number">15+</h3>
+                                        <p class="stat-label">Plataformas Integradas</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="stat-item">
+                                        <h3 class="stat-number">50+</h3>
+                                        <p class="stat-label">APIs Disponibles</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="stat-item">
+                                        <h3 class="stat-number">99.9%</h3>
+                                        <p class="stat-label">Uptime Garantizado</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="stat-item">
+                                        <h3 class="stat-number">24/7</h3>
+                                        <p class="stat-label">Soporte Técnico</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTA de Integración -->
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <div class="integration-cta">
+                            <h4 class="mb-3">¿Quieres integrar OTIF con tu plataforma?</h4>
+                            <p class="mb-4">Conecta tu negocio con la red logística más grande de México</p>
+                            <div class="cta-buttons">
+                                <button class="btn btn-primary btn-lg me-3">
+                                    <span class="material-icons me-2">code</span>
+                                    Ver Documentación API
+                                </button>
+                                <button class="btn btn-outline-primary btn-lg">
+                                    <span class="material-icons me-2">support_agent</span>
+                                    Contactar Soporte
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIOS -->
+        <section id="testimonios" class="testimonios" aria-labelledby="testimonios-title">
+            <div class="container">
+                <h2 class="section-title" id="testimonios-title">Testimonios de clientes</h2>
+                <div class="row g-4" role="list">
+                    <div class="col-lg-4 col-md-6" role="listitem">
+                        <blockquote class="testimonio-card h-100">
+                            <p>"OTIF nos ayudó a optimizar nuestra cadena logística y reducir costos."</p>
+                            <span class="testimonio-author">— Logística MX</span>
+                        </blockquote>
+                    </div>
+                    <div class="col-lg-4 col-md-6" role="listitem">
+                        <blockquote class="testimonio-card h-100">
+                            <p>"El seguimiento en tiempo real y la atención personalizada son excelentes."</p>
+                            <span class="testimonio-author">— Importadora ABC</span>
+                        </blockquote>
+                    </div>
+                    <div class="col-lg-4 col-md-6" role="listitem">
+                        <blockquote class="testimonio-card h-100">
+                            <p>"La cotización inmediata y la facilidad de uso hacen la diferencia."</p>
+                            <span class="testimonio-author">— Shipper Global</span>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADÍSTICAS -->
+        <section class="estadisticas alt-bg" aria-label="Estadísticas de OTIF">
+            <div class="container">
+                <div class="row g-4" role="list">
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <div class="estadistica-card h-100">
+                            <span class="stat-number">+500</span>
+                            <span class="stat-label">Clientes activos</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <div class="estadistica-card h-100">
+                            <span class="stat-number">+200</span>
+                            <span class="stat-label">Rutas internacionales</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <div class="estadistica-card h-100">
+                            <span class="stat-number">99%</span>
+                            <span class="stat-label">Entregas a tiempo</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6" role="listitem">
+                        <div class="estadistica-card h-100">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Soporte</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="footer" role="contentinfo">
+        <div class="container">
+            <div class="row g-4 footer-content">
+                <!-- Productos -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h4>Productos</h4>
+                        <ul>
+                            <li><a href="#">Plataforma OTIF</a></li>
+                            <li><a href="#">Gestión de Pedidos</a></li>
+                            <li><a href="#">Aéreo</a></li>
+                            <li><a href="#">Carga marítima</a></li>
+                            <li><a href="#">Transporte Terrestre</a></li>
+                            <li><a href="#">Envío Express</a></li>
+                            <li><a href="#">Menos de un camión</a></li>
+                            <li><a href="#">Menos que contenedor</a></li>
+                            <li><a href="#">Rastrea tu envío</a></li>
+                            <li><a href="#">Información</a></li>
+                            <li><a href="#">Envío internacional</a></li>
+                            <li><a href="#">International Deliveries</a></li>
+                            <li><a href="#">Shipping Monterrey</a></li>
+                            <li><a href="#">Envíos seguros</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Casos de uso -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h4>Casos de uso</h4>
+                        <ul>
+                            <li><a href="#">Público en general</a></li>
+                            <li><a href="#">Pequeñas y Medianas Empresas</a></li>
+                            <li><a href="#">Comercio electrónico</a></li>
+                            <li><a href="#">Bienes de alto valor</a></li>
+                            <li><a href="#">Marcas Globales</a></li>
+                            <li><a href="#">Distribución al por mayor</a></li>
+                        </ul>
+                        <h5 class="mt-4">Información</h5>
+                        <ul>
+                            <li><a href="#">Transporte</a></li>
+                            <li><a href="#">Embarcar hacia</a></li>
+                            <li><a href="#">Envíos a México</a></li>
+                            <li><a href="#">Envío económico</a></li>
+                            <li><a href="#">Envíos de paquetes</a></li>
+                            <li><a href="#">Envíos nacionales</a></li>
+                            <li><a href="#">Envíos seguros</a></li>
+                            <li><a href="#">Guías prepago</a></li>
+                            <li><a href="#">Mensajero express</a></li>
+                            <li><a href="#">Paquete económico</a></li>
+                            <li><a href="#">Paquetes en México</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Desarrolladores -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h4>Desarrolladores</h4>
+                        <ul>
+                            <li><a href="#">Documentación API</a></li>
+                            <li><a href="#">Referencias de API</a></li>
+                            <li><a href="#">Estado de la API</a></li>
+                        </ul>
+                        <h5 class="mt-4">Cuenta</h5>
+                        <ul>
+                            <li><a href="#">Información</a></li>
+                        </ul>
+                        <h5 class="mt-4">Correos de mexico</h5>
+                        <ul>
+                            <li><a href="#">Carsa</a></li>
+                            <li><a href="#">Paquete Expreso</a></li>
+                            <li><a href="#">Oficina de correos</a></li>
+                            <li><a href="#">Paquete rojo</a></li>
+                            <li><a href="#">Sendex</a></li>
+                            <li><a href="#">UPS</a></li>
+                            <li><a href="#">DHL</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Compañía -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h4>Compañía</h4>
+                        <ul>
+                            <li><a href="#">Affiliate program</a></li>
+                            <li><a href="#">Términos y condiciones</a></li>
+                            <li><a href="#">Compañías</a></li>
+                            <li><a href="#">Citando</a></li>
+                            <li><a href="#">Seguridad</a></li>
+                            <li><a href="#">¿Por qué OTIF?</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Newsletter y Redes Sociales -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer-section">
+                        <h4>Suscríbete a nuestro boletín</h4>
+                        <div class="newsletter-form mb-4">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Ingresa Tu Correo" aria-label="Email para newsletter">
+                                <button class="btn btn-primary" type="button">Suscribir</button>
+                            </div>
+                        </div>
+                        
+                        <h5>Redes sociales</h5>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <span class="material-icons">facebook</span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <span class="material-icons">twitter</span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <span class="material-icons">linkedin</span>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <span class="material-icons">instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información de Contacto -->
+            <div class="row g-4 mt-4">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h5>Oficina en México</h5>
+                        <div class="contact-details">
+                            <p><strong>Dirección:</strong><br>
+                            2da Magnolia 1615 Col. Reforma, Monterrey, Nuevo León. 64550</p>
+                            <p><strong>Número Teléfonico:</strong><br>
+                            <a href="tel:+528182626130">+ 52 (81) 82626130</a></p>
+                            <p><strong>Correo Electrónico:</strong><br>
+                            <a href="mailto:hola@otif.mx">hola@otif.mx</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h5>Oficina en USA</h5>
+                        <div class="contact-details">
+                            <p><strong>Dirección:</strong><br>
+                            8911 North Capital of Texas Highway, Suite 4200 Austin, TX 78759, USA</p>
+                            <p><strong>Número Teléfonico:</strong><br>
+                            <a href="tel:+16206049798">+1 (620) 604-9798</a></p>
+                            <p><strong>Correo Electrónico:</strong><br>
+                            <a href="mailto:hola@otif.io">hola@otif.io</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 OTIF. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Medidas Prediseñadas -->
+    <div class="modal fade" id="medidasModal" tabindex="-1" aria-labelledby="medidasModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="medidasModalLabel">
+                        <span class="material-icons me-2">straighten</span>
+                        Medidas Prediseñadas
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-4">Selecciona una medida prediseñada para llenar automáticamente las dimensiones de tu envío:</p>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="medida-card" data-medida="a4">
+                                <div class="medida-icon">
+                                    <span class="material-icons">description</span>
+                                </div>
+                                <h6 class="medida-title">Sobre A4</h6>
+                                <p class="medida-dimensiones">33 x 23 x 5 cm</p>
+                                <button class="btn btn-sm btn-outline-primary btn-seleccionar-medida">Seleccionar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-4">
+                            <div class="medida-card" data-medida="general">
+                                <div class="medida-icon">
+                                    <span class="material-icons">inventory_2</span>
+                                </div>
+                                <h6 class="medida-title">Paquete General</h6>
+                                <p class="medida-dimensiones">50 x 50 x 50 cm</p>
+                                <button class="btn btn-sm btn-outline-primary btn-seleccionar-medida">Seleccionar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-4">
+                            <div class="medida-card" data-medida="atypical">
+                                <div class="medida-icon">
+                                    <span class="material-icons">package</span>
+                                </div>
+                                <h6 class="medida-title">Un paquete típico</h6>
+                                <p class="medida-dimensiones">150 x 70 x 30 cm</p>
+                                <button class="btn btn-sm btn-outline-primary btn-seleccionar-medida">Seleccionar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-4">
+                            <div class="medida-card" data-medida="shoe">
+                                <div class="medida-icon">
+                                    <span class="material-icons">sports_soccer</span>
+                                </div>
+                                <h6 class="medida-title">Caja de zapatos</h6>
+                                <p class="medida-dimensiones">35 x 23.5 x 13.5 cm</p>
+                                <button class="btn btn-sm btn-outline-primary btn-seleccionar-medida">Seleccionar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-4">
+                            <div class="medida-card" data-medida="international">
+                                <div class="medida-icon">
+                                    <span class="material-icons">straighten</span>
+                                </div>
+                                <h6 class="medida-title">Metro internacional</h6>
+                                <p class="medida-dimensiones">96 x 15 x 15 cm</p>
+                                <button class="btn btn-sm btn-outline-primary btn-seleccionar-medida">Seleccionar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-4">
+                            <div class="medida-card" data-medida="tires">
+                                <div class="medida-icon">
+                                    <span class="material-icons">tire_repair</span>
+                                </div>
+                                <h6 class="medida-title">2 x Neumáticos (sin llantas)</h6>
+                                <p class="medida-dimensiones">33 x 23 x 5 cm</p>
+                                <button class="btn btn-sm btn-outline-primary btn-seleccionar-medida">Seleccionar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-4">
+                            <div class="medida-card" data-medida="suitcase">
+                                <div class="medida-icon">
+                                    <span class="material-icons">luggage</span>
+                                </div>
+                                <h6 class="medida-title">Maleta</h6>
+                                <p class="medida-dimensiones">70 x 50 x 30 cm</p>
+                                <button class="btn btn-sm btn-outline-primary btn-seleccionar-medida">Seleccionar</button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-4">
+                            <div class="medida-card" data-medida="pallet">
+                                <div class="medida-icon">
+                                    <span class="material-icons">grid_on</span>
+                                </div>
+                                <h6 class="medida-title">Tarima</h6>
+                                <p class="medida-dimensiones">120 x 80 x 100 cm</p>
+                                <button class="btn btn-sm btn-outline-primary btn-seleccionar-medida">Seleccionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Material Design JavaScript -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

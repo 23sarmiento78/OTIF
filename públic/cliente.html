@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTIF | Plataforma para Clientes</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Material Design Web Components -->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Estilos específicos para cliente con colores más claros y modernos -->
+    <style>
+        :root {
+            --otif-primary: #2563EB;
+            --otif-primary-light: #3B82F6;
+            --otif-primary-dark: #1D4ED8;
+            --otif-secondary: #10B981;
+            --otif-secondary-light: #34D399;
+            --otif-secondary-dark: #059669;
+            --otif-accent: #8B5CF6;
+            --otif-accent-light: #A78BFA;
+            --otif-accent-dark: #7C3AED;
+            --otif-nav-bg: var(--otif-primary);
+            --otif-footer-bg: #1E293B;
+            --otif-card-bg: #FFFFFF;
+            --otif-alt-bg: #F8FAFC;
+            --otif-section-alt: #F1F5F9;
+            --otif-text-primary: #1E293B;
+            --otif-text-secondary: #64748B;
+            --otif-border: #E2E8F0;
+            --otif-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --otif-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .main-navbar {
+            background: rgba(37,99,235,0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-video-bg {
+            background: linear-gradient(135deg, #2563EB 0%, #10B981 100%);
+        }
+        
+        .hero-overlay {
+            background: rgba(37,99,235,0.6);
+        }
+        
+        .cotizacion-card {
+            background: var(--otif-card-bg);
+            border: 1px solid var(--otif-border);
+            box-shadow: var(--otif-shadow);
+            border-radius: 16px;
+        }
+        
+        .servicio-card {
+            background: var(--otif-card-bg);
+            border: 1px solid var(--otif-border);
+            box-shadow: var(--otif-shadow);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .servicio-card:hover {
+            background: var(--otif-card-bg);
+            border-color: var(--otif-primary);
+            box-shadow: var(--otif-shadow-hover);
+            transform: translateY(-2px);
+        }
+        
+        .beneficio-card {
+            background: var(--otif-card-bg);
+            border: 1px solid var(--otif-border);
+            box-shadow: var(--otif-shadow);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .beneficio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--otif-primary), var(--otif-secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .beneficio-card:hover {
+            background: var(--otif-card-bg);
+            border-color: var(--otif-primary);
+            box-shadow: var(--otif-shadow-hover);
+            transform: translateY(-4px);
+        }
+        
+        .beneficio-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .beneficio-card .material-icons {
+            color: var(--otif-primary);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .beneficio-card:hover .material-icons {
+            color: var(--otif-secondary);
+            transform: scale(1.1);
+        }
+        
+        .beneficio-card h5 {
+            color: var(--otif-text-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .beneficio-card p {
+            color: var(--otif-text-secondary);
+            line-height: 1.6;
+        }
+        
+        .footer {
+            background: var(--otif-footer-bg) !important;
+        }
+        
+        .form-control, .form-select {
+            background: var(--otif-card-bg);
+            border: 2px solid var(--otif-border);
+            color: var(--otif-text-primary);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background: var(--otif-card-bg);
+            border-color: var(--otif-primary);
+            color: var(--otif-text-primary);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+        
+        .form-control::placeholder {
+            color: var(--otif-text-secondary);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--otif-primary), var(--otif-primary-light));
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--otif-primary-dark), var(--otif-primary));
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--otif-primary);
+            color: var(--otif-primary);
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--otif-primary);
+            border-color: var(--otif-primary);
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        .plan-card {
+            background: var(--otif-card-bg);
+            border: 2px solid var(--otif-border);
+            box-shadow: var(--otif-shadow);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--otif-primary), var(--otif-secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .plan-card:hover {
+            background: var(--otif-card-bg);
+            border-color: var(--otif-primary);
+            box-shadow: var(--otif-shadow-hover);
+            transform: translateY(-4px);
+        }
+        
+        .plan-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .plan-card.border-primary {
+            border-color: var(--otif-primary) !important;
+        }
+        
+        .plan-card.border-primary::before {
+            transform: scaleX(1);
+        }
+        
+        .bg-white {
+            background: var(--otif-alt-bg) !important;
+        }
+        
+        .text-dark {
+            color: var(--otif-text-primary) !important;
+        }
+        
+        .text-muted {
+            color: var(--otif-text-secondary) !important;
+        }
+        
+        .section-title {
+            color: var(--otif-text-primary);
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--otif-primary), var(--otif-secondary));
+            border-radius: 2px;
+        }
+        
+        .hero-title {
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .hero-cta {
+            background: linear-gradient(135deg, var(--otif-secondary), var(--otif-secondary-light)) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            font-weight: 600 !important;
+            padding: 1rem 2rem !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .hero-cta:hover {
+            background: linear-gradient(135deg, var(--otif-secondary-dark), var(--otif-secondary)) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(16,185,129,0.4) !important;
+        }
+        
+        .stat {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .stat:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .stat-number {
+            color: var(--otif-secondary-light);
+            font-weight: 700;
+            font-size: 2rem;
+        }
+        
+        .stat-label {
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+        
+        /* Animaciones suaves */
+        .beneficio-card, .plan-card, .servicio-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .beneficio-card {
+                padding: 1.5rem;
+            }
+            
+            .plan-card {
+                margin-bottom: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="navbar navbar-expand-lg fixed-top main-navbar" role="banner">
+        <div class="container">
+            <section class="navbar-brand d-flex align-items-center" aria-label="Logo y título">
+                <img src="imagenes/Otif isologo-3.png" alt="Logo OTIF, plataforma de logística" class="logo">
+                <span class="ms-2">OTIF</span>
+            </section>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <nav class="collapse navbar-collapse" id="navbarNav" role="navigation">
+                <ul class="navbar-nav me-auto">
+                    <!-- Productos Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="nav-label">Productos</span>
+                        </a>
+                        <ul class="dropdown-menu multi-column">
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Plataforma OTIF</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Seguimiento de sus envíos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Rastrear envíos Marítimos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Gestión de Pedidos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Aduanas</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Emisión de carbono compensada</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Envío Express</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Carga Consolidada LTL</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Transporte Terrestre</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Aéreo</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Contenedor Consolidado LCL</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Transporte Marítimo</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Despacho de aduana</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Arrendamientos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Asesoriamiento comercial</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Seguro de carga</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Clasificación del producto</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Materiales peligrosos</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Control de Cumplimiento</span></a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Casos de Uso Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="nav-label">Casos de uso</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Público en general</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Pequeñas y Medianas Empresas</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Comercio electrónico</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Bienes de alto valor</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Marcas Globales</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Distribución al por mayor</span></a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Recursos Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="nav-label">Recursos</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Diccionario</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Información de recolección y entrega</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Cumplimiento mayorista</span></a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Compañía Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="nav-label">Compañía</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Logística de superredes</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Clientes</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Programa de Afiliados</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">APIs</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Inteligencia artificial</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="dropdown-label">Red Global</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <!-- Lado derecho del navbar -->
+                <div class="navbar-nav ms-auto">
+                    <div class="nav-item d-flex gap-2 align-items-center">
+                        <!-- Seguimiento -->
+                        <a href="tracking.html" class="btn btn-outline-light btn-sm me-2">
+                            <span class="material-icons">search</span>
+                            <span class="btn-label d-none d-md-inline">Seguimiento</span>
+                        </a>
+                        
+                        <!-- Carrito (solo visible si hay sesión) -->
+                        <button class="btn btn-outline-light btn-sm me-2" id="cart-btn" style="display: none;">
+                            <span class="material-icons">shopping_cart</span>
+                            <span class="btn-label d-none d-md-inline">Carrito</span>
+                        </button>
+                        
+                        <!-- Pedidos (solo visible si hay sesión) -->
+                        <button class="btn btn-outline-light btn-sm me-2" id="orders-btn" style="display: none;">
+                            <span class="material-icons">receipt_long</span>
+                            <span class="btn-label d-none d-md-inline">Pedidos</span>
+                        </button>
+                        
+                        <!-- Login -->
+                        <button class="btn btn-light btn-sm me-2" id="login-btn">
+                            <span class="material-icons me-1">login</span>
+                            <span class="btn-label">Iniciar Sesión</span>
+                        </button>
+                        
+                        <!-- Registro -->
+                        <button class="btn btn-primary btn-sm" id="register-btn">
+                            <span class="material-icons me-1">person_add</span>
+                            <span class="btn-label">Registrarse</span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <!-- HERO -->
+        <section class="hero hero-video-bg" aria-labelledby="hero-title">
+            <!-- Video de fondo -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="imagenes/5661061-hd_1920_1080_30fps.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            
+            <!-- Overlay para mejorar legibilidad -->
+            <div class="hero-overlay"></div>
+            
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title" id="hero-title">Optimiza tu logística con la plataforma de OTIF</h1>
+                    <p class="hero-subtitle">Gestiona, cotiza y rastrea tus envíos en una sola plataforma. Conecta tu operación logística con las mejores soluciones de transporte y recibe atención personalizada en cada etapa.</p>
+                    <a href="#cotizar" class="mdc-button mdc-button--raised hero-cta" aria-label="Cotiza tu envío ahora">Cotiza tu envío ahora</a>
+                    <a href="#beneficios" class="btn btn-outline-light btn-lg ms-3">Conoce nuestros beneficios</a>
+                    <div class="hero-stats" aria-label="Estadísticas de experiencia y satisfacción">
+                        <div class="stat">
+                            <span class="stat-number">+25</span>
+                            <span class="stat-label">Años de experiencia</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">+10K</span>
+                            <span class="stat-label">Envíos mensuales</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Satisfacción</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section class="beneficios" id="beneficios">
+            <div class="container">
+                <h2 class="text-center mb-5 section-title">Beneficios claros para tu operación</h2>
+                <div class="row g-4">
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <span class="material-icons beneficio-icon mb-2">insights</span>
+                            <h5>Basado en datos</h5>
+                            <p>Usa tecnología logística para tomar decisiones inteligentes, claras y a tu ritmo. Elige horarios, precios y servicios según lo que tu negocio necesita.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <span class="material-icons beneficio-icon mb-2">compare_arrows</span>
+                            <h5>Eficiencia y transparencia</h5>
+                            <p>Conecta fácilmente a todos los actores de tu cadena de suministro. Integra, optimiza y reduce costos con servicios modulares hechos a la medida.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <span class="material-icons beneficio-icon mb-2">schedule</span>
+                            <h5>Siempre a tiempo</h5>
+                            <p>La puntualidad no es una promesa, es el estándar. Coordina, compara y asegura tus envíos con precisión.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de valor y CTA -->
+        <section class="py-5 bg-white text-center">
+            <div class="container">
+                <h2 class="mb-3">Bienvenido a la Nueva Era de la Logística: Conectividad Total, Visibilidad Total</h2>
+                <p class="mb-4">OTIF integra toda tu cadena de suministro en una sola plataforma digital. Desde la cotización instantánea hasta el seguimiento inteligente por GPS en tiempo real, nuestra tecnología elimina fricciones, reduce tus costos y te da el control total de cada envío.</p>
+                <a href="#cotizar" class="btn btn-primary btn-lg">Comienza ahora</a>
+            </div>
+        </section>
+
+        <!-- Características de seguimiento -->
+        <section class="beneficios" id="seguimiento">
+            <div class="container">
+                <h2 class="text-center mb-5 section-title">¿Por qué necesitas la plataforma de seguimiento de OTIF?</h2>
+                <div class="row g-4">
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <span class="material-icons beneficio-icon mb-2">gps_fixed</span>
+                            <h5>Seguimiento en tiempo real</h5>
+                            <p>Datos precisos de ubicación y predicción de ETA con IA para evitar retrasos críticos.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <span class="material-icons beneficio-icon mb-2">history</span>
+                            <h5>Historial completo</h5>
+                            <p>Movimientos desde origen hasta destino, alertas proactivas y monitoreo de condiciones de la carga.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <span class="material-icons beneficio-icon mb-2">visibility</span>
+                            <h5>Visibilidad total</h5>
+                            <p>Visualiza toda tu cadena de suministro en una sola pantalla y recibe notificaciones ante incidencias.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Casos de uso -->
+        <section class="casos-uso bg-white" id="casos-uso">
+            <div class="container">
+                <h2 class="text-center mb-5 section-title">Casos de uso para tu empresa</h2>
+                <div class="row g-4">
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <h6>Empresas manufactureras</h6>
+                            <p>Evita paros de planta con información anticipada. Si tu contenedor no llega, puedes reaccionar a tiempo y evitar pérdidas millonarias.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <h6>Comercializadoras y retailers</h6>
+                            <p>Cumple con tus entregas a tiempo. Evita perder clientes por no tener visibilidad de tu mercancía en tránsito.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="beneficio-card">
+                            <h6>eCommerce y distribuidores</h6>
+                            <p>Optimiza la experiencia postventa. Comparte estados con tus clientes y mejora la confianza en tu operación.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planes -->
+        <section class="planes" id="planes">
+            <div class="container">
+                <h2 class="text-center mb-5 section-title">Elige el plan que mejor se adapta a tus necesidades</h2>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card plan-card text-center p-4">
+                            <h5 class="mb-3">Básico</h5>
+                            <h3 class="fw-bold mb-2">$500 <small class="fs-6">USD/mes</small></h3>
+                            <ul class="list-unstyled mb-4">
+                                <li>Seguimiento en tiempo real</li>
+                                <li>Soporte básico</li>
+                                <li>Acceso a panel de control</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Comienza ahora</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card plan-card text-center p-4 border-primary border-2">
+                            <h5 class="mb-3">Intermedio</h5>
+                            <h3 class="fw-bold mb-2">$600 <small class="fs-6">USD/mes</small></h3>
+                            <ul class="list-unstyled mb-4">
+                                <li>Todo lo del Básico</li>
+                                <li>Predicción de ETA con IA</li>
+                                <li>Alertas proactivas</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Comienza ahora</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card plan-card text-center p-4">
+                            <h5 class="mb-3">Avanzado</h5>
+                            <h3 class="fw-bold mb-2">$700 <small class="fs-6">USD/mes</small></h3>
+                            <ul class="list-unstyled mb-4">
+                                <li>Todo lo del Intermedio</li>
+                                <li>Monitoreo de condiciones de carga</li>
+                                <li>Integración con ERP</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Comienza ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h6>Contacto</h6>
+                    <p>México: 2da Magnolia 1615 Col. Reforma, Monterrey, Nuevo León. 64550 <br>+52 (81) 3105 - 9615</p>
+                    <p>EEUU: 8911 North Capital of Texas Highway, Suite 4200 Austin, TX 78759, USA <br>+1 (620) 604 - 9798</p>
+                    <p>China: 8 Shiji Blvd, Luijiazui, Pudong, Shanghai, China, 200120</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6>Enlaces</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#soluciones">Soluciones</a></li>
+                        <li><a href="#tecnologia">Tecnología</a></li>
+                        <li><a href="#empresa">Empresa</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h6>Legal</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Aviso de privacidad</a></li>
+                    </ul>
+                    <p class="mt-3">&copy; 2020 OTIF. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

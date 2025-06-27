@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - OTIF</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Material Design Web Components -->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--otif-purple) 0%, var(--otif-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .auth-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .auth-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--otif-blue), var(--otif-purple), var(--otif-blue));
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        
+        .auth-title {
+            color: var(--otif-purple);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .auth-subtitle {
+            color: var(--otif-gray);
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            color: var(--otif-gray);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-control:focus {
+            border-color: var(--otif-purple);
+            box-shadow: 0 0 0 0.2rem rgba(89, 50, 234, 0.25);
+            background: #fff;
+        }
+        
+        .form-control::placeholder {
+            color: #adb5bd;
+        }
+        
+        .date-input {
+            position: relative;
+        }
+        
+        .date-input::after {
+            content: 'dd/mm/aaaa';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #adb5bd;
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .form-check-input {
+            margin-top: 3px;
+            border: 2px solid #e9ecef;
+            border-radius: 4px;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--otif-purple);
+            border-color: var(--otif-purple);
+        }
+        
+        .form-check-label {
+            color: var(--otif-gray);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .form-check-label a {
+            color: var(--otif-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .form-check-label a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn-register {
+            background: var(--otif-purple);
+            border: none;
+            border-radius: 10px;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .btn-register:hover {
+            background: var(--otif-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(89, 50, 234, 0.3);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            color: var(--otif-gray);
+            font-size: 0.9rem;
+        }
+        
+        .auth-footer a {
+            color: var(--otif-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--otif-blue);
+            transform: translateX(-5px);
+        }
+        
+        @media (max-width: 576px) {
+            .auth-card {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .auth-title {
+                font-size: 1.5rem;
+            }
+            
+            .back-link {
+                top: 15px;
+                left: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <a href="index.html" class="back-link">
+            <span class="material-icons">arrow_back</span>
+            Volver al inicio
+        </a>
+        
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="imagenes/Otif isologo-3.png" alt="Logo OTIF" class="auth-logo">
+                <h1 class="auth-title">Crear cuenta</h1>
+                <p class="auth-subtitle">Para empresas y particulares</p>
+            </div>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Introduce tu correo electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="correo@ejemplo.com" required>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" placeholder="Tu apellido" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono" class="form-label">Número de teléfono</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="+52 (81) 1234-5678" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                    <input type="date" class="form-control date-input" id="fechaNacimiento" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Mínimo 8 caracteres" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="codigoReferencia" class="form-label">Código de referencia (Opcional)</label>
+                    <input type="text" class="form-control" id="codigoReferencia" placeholder="Código de referencia">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirma tu contraseña" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tipoUsuario" class="form-label">Registrarse como</label>
+                    <select class="form-select" id="tipoUsuario" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="proveedor">Proveedor</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" class="form-check-input" id="terminos" required>
+                    <label class="form-check-label" for="terminos">
+                        Acepto los <a href="#">Términos</a> y la <a href="#">Política de privacidad</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-register">
+                    <span class="material-icons me-2">person_add</span>
+                    Crear cuenta
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                ¿Ya tienes una cuenta? <a href="login.html">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validación básica
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('La contraseña debe tener al menos 8 caracteres');
+                return;
+            }
+            
+            const tipo = document.getElementById('tipoUsuario').value;
+            if (tipo === 'cliente') {
+                window.location.href = 'cliente.html';
+            } else if (tipo === 'proveedor') {
+                window.location.href = 'proveedor.html';
+            }
+        });
+    </script>
+</body>
+</html> 
